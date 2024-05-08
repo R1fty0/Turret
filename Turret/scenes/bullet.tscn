@@ -7,7 +7,8 @@
 radius = 68.469
 
 [node name="Bullet" type="Area2D"]
-scale = Vector2(0.5, 0.5)
+top_level = true
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_pn3yr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

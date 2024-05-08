@@ -1,39 +1,84 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2t032qb74qgc"]
+[gd_scene load_steps=10 format=3 uid="uid://b2t032qb74qgc"]
 
 [ext_resource type="Texture2D" uid="uid://btneb1f4t1dbn" path="res://assets/art/background-1.png" id="1_pp8ja"]
-[ext_resource type="PackedScene" uid="uid://jcx5imovn3ew" path="res://scenes/player.tscn" id="4_l4kgf"]
+[ext_resource type="Texture2D" uid="uid://b1dfpun203kt6" path="res://assets/art/cannon-base.png" id="2_a1bdx"]
+[ext_resource type="Texture2D" uid="uid://dbjjy24r8qd5u" path="res://assets/art/cart.png" id="2_tgher"]
+[ext_resource type="Texture2D" uid="uid://q18qaqgk35n7" path="res://assets/art/cannon.png" id="3_glkpd"]
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="4_doksa"]
 [ext_resource type="Texture2D" uid="uid://cwj8u03r86ein" path="res://assets/art/crosshair.png" id="4_pkcqe"]
+[ext_resource type="Texture2D" uid="uid://dsyrsiecv7i43" path="res://assets/art/gear.png" id="5_42xvp"]
 [ext_resource type="Script" path="res://scripts/crosshair.gd" id="5_o2wqg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf0wc"]
+size = Vector2(97, 97)
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera" type="Camera2D" parent="."]
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Background" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -577.0
-offset_top = -325.0
-offset_right = 539.0
-offset_bottom = 281.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 3.0
+offset_right = 1151.0
+offset_bottom = 645.0
 texture = ExtResource("1_pp8ja")
+expand_mode = 1
 
-[node name="Crosshair" type="TextureRect" parent="Control"]
+[node name="Crosshair" type="TextureRect" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 577.0
+offset_top = 320.0
+offset_right = 617.0
+offset_bottom = 360.0
 texture = ExtResource("4_pkcqe")
+expand_mode = 1
 script = ExtResource("5_o2wqg")
 
-[node name="Player" parent="." instance=ExtResource("4_l4kgf")]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ShopButton" type="Button" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -97.0
+offset_right = 95.0
+offset_bottom = -39.0
+grow_vertical = 0
+icon = ExtResource("2_tgher")
+
+[node name="SettingsButton" type="Button" parent="UI"]
+offset_left = 29.0
+offset_top = 29.0
+offset_right = 87.0
+offset_bottom = 87.0
+toggle_mode = true
+icon = ExtResource("5_42xvp")
+
+[node name="Player" type="Area2D" parent="."]
+position = Vector2(577, 320)
+
+[node name="CannonBase" type="Sprite2D" parent="Player"]
+z_index = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_a1bdx")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_lf0wc")
+
+[node name="Cannon" type="Sprite2D" parent="Player"]
+z_index = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_glkpd")
+script = ExtResource("4_doksa")
+
+[node name="FiringPoint" type="Marker2D" parent="Player/Cannon"]
+unique_name_in_owner = true
+position = Vector2(0, -250)
+rotation = 3.14159
+scale = Vector2(3.33333, 3.33333)
+gizmo_extents = 36.0
+
+[node name="ReloadTimer" type="Timer" parent="Player"]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="Player/ReloadTimer" to="Player/Cannon" method="_on_reload_timer_timeout"]
