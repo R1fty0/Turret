@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2t032qb74qgc"]
+
+[ext_resource type="Texture2D" uid="uid://btneb1f4t1dbn" path="res://assets/art/background-1.png" id="1_pp8ja"]
+[ext_resource type="PackedScene" uid="uid://jcx5imovn3ew" path="res://scenes/player.tscn" id="4_l4kgf"]
+[ext_resource type="Texture2D" uid="uid://cwj8u03r86ein" path="res://assets/art/crosshair.png" id="4_pkcqe"]
+[ext_resource type="Script" path="res://scripts/crosshair.gd" id="5_o2wqg"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -577.0
+offset_top = -325.0
+offset_right = 539.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pp8ja")
+
+[node name="Crosshair" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_pkcqe")
+script = ExtResource("5_o2wqg")
+
+[node name="Player" parent="." instance=ExtResource("4_l4kgf")]

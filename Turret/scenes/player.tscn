@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://jcx5imovn3ew"]
+
+[ext_resource type="Texture2D" uid="uid://b1dfpun203kt6" path="res://assets/art/cannon-base.png" id="1_d6w2s"]
+[ext_resource type="Texture2D" uid="uid://q18qaqgk35n7" path="res://assets/art/cannon.png" id="2_fnotm"]
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="3_jiphd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf0wc"]
+size = Vector2(97, 97)
+
+[node name="Player" type="Area2D"]
+
+[node name="CannonBase" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_d6w2s")
+
+[node name="Cannon" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_fnotm")
+script = ExtResource("3_jiphd")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_lf0wc")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -75)
+rotation = 3.14159
+gizmo_extents = 36.0
+
+[node name="FirerateTimer" type="Timer" parent="."]
