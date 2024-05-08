@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwj8u03r86ein"
-path="res://.godot/imported/crosshair.png-f9876409639846646164f9202062e799.ctex"
+uid="uid://q18qaqgk35n7"
+path="res://.godot/imported/cannon.png-49ce764d343279c4f5b600c97d70e867.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/crosshair.png"
-dest_files=["res://.godot/imported/crosshair.png-f9876409639846646164f9202062e799.ctex"]
+source_file="res://assets/art/cannon/cannon.png"
+dest_files=["res://.godot/imported/cannon.png-49ce764d343279c4f5b600c97d70e867.ctex"]
 
 [params]
 

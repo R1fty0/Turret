@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc741y3lgpxac"
-path="res://.godot/imported/bullet.png-2c7ba26ddbc560ce1efdc1dd98291e68.ctex"
+uid="uid://bc6jvfggnwgjo"
+path="res://.godot/imported/crateWood.png-38ea8b1641af9cc5382368b4bd4e4318.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-2c7ba26ddbc560ce1efdc1dd98291e68.ctex"]
+source_file="res://assets/art/obstacles/crateWood.png"
+dest_files=["res://.godot/imported/crateWood.png-38ea8b1641af9cc5382368b4bd4e4318.ctex"]
 
 [params]
 

@@ -1,13 +1,13 @@
 extends Sprite2D
 
 # Crosshair icon 
-@onready var crosshair:TextureRect = %Crosshair
+@onready var crosshair:TextureRect = %Cursor
 # Less than 0.1 is best. 
 const TRAVERSE:float = 0.05
 # Bullet scene 
 const BULLET: PackedScene = preload("res://scenes/bullet.tscn")
 # How long the cannon takes to reload
-const RELOAD_TIME: float = 1.5
+const RELOAD_TIME: float = 0.5
 
 @onready var reload_timer = %ReloadTimer
 var can_fire: bool = true

@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://b2t032qb74qgc"]
 
 [ext_resource type="Texture2D" uid="uid://btneb1f4t1dbn" path="res://assets/art/background-1.png" id="1_pp8ja"]
-[ext_resource type="Texture2D" uid="uid://b1dfpun203kt6" path="res://assets/art/cannon-base.png" id="2_a1bdx"]
-[ext_resource type="Texture2D" uid="uid://dbjjy24r8qd5u" path="res://assets/art/cart.png" id="2_tgher"]
-[ext_resource type="Texture2D" uid="uid://q18qaqgk35n7" path="res://assets/art/cannon.png" id="3_glkpd"]
+[ext_resource type="Texture2D" uid="uid://b1dfpun203kt6" path="res://assets/art/cannon/cannon-base.png" id="2_a1bdx"]
+[ext_resource type="Texture2D" uid="uid://dbjjy24r8qd5u" path="res://assets/art/buttons/cart.png" id="2_tgher"]
+[ext_resource type="Texture2D" uid="uid://q18qaqgk35n7" path="res://assets/art/cannon/cannon.png" id="3_glkpd"]
 [ext_resource type="Script" path="res://scripts/cannon.gd" id="4_doksa"]
-[ext_resource type="Texture2D" uid="uid://cwj8u03r86ein" path="res://assets/art/crosshair.png" id="4_pkcqe"]
-[ext_resource type="Texture2D" uid="uid://dsyrsiecv7i43" path="res://assets/art/gear.png" id="5_42xvp"]
+[ext_resource type="Texture2D" uid="uid://cwj8u03r86ein" path="res://assets/art/cursors/crosshair.png" id="4_pkcqe"]
+[ext_resource type="Texture2D" uid="uid://dsyrsiecv7i43" path="res://assets/art/buttons/gear.png" id="5_42xvp"]
 [ext_resource type="Script" path="res://scripts/crosshair.gd" id="5_o2wqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf0wc"]
@@ -21,7 +21,7 @@ offset_bottom = 645.0
 texture = ExtResource("1_pp8ja")
 expand_mode = 1
 
-[node name="Crosshair" type="TextureRect" parent="."]
+[node name="Cursor" type="TextureRect" parent="."]
 unique_name_in_owner = true
 offset_left = 577.0
 offset_top = 320.0
