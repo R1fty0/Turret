@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbjjy24r8qd5u"
-path="res://.godot/imported/cart.png-85932826bce9f0649b28aae7d817db59.ctex"
+uid="uid://n66tcgcnw4la"
+path="res://.godot/imported/tank_red.png-6e580e2180107a120170110d638d8370.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/buttons/cart.png"
-dest_files=["res://.godot/imported/cart.png-85932826bce9f0649b28aae7d817db59.ctex"]
+source_file="res://assets/art/tanks/tank_icons/tank_red.png"
+dest_files=["res://.godot/imported/tank_red.png-6e580e2180107a120170110d638d8370.ctex"]
 
 [params]
 

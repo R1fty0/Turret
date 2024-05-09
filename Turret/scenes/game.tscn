@@ -1,37 +1,56 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2t032qb74qgc"]
+[gd_scene load_steps=18 format=3 uid="uid://b2t032qb74qgc"]
 
-[ext_resource type="Texture2D" uid="uid://btneb1f4t1dbn" path="res://assets/art/background-1.png" id="1_pp8ja"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_jo3rp"]
+[ext_resource type="Texture2D" uid="uid://btneb1f4t1dbn" path="res://assets/art/environment/background-1.png" id="1_pp8ja"]
 [ext_resource type="Texture2D" uid="uid://b1dfpun203kt6" path="res://assets/art/cannon/cannon-base.png" id="2_a1bdx"]
-[ext_resource type="Texture2D" uid="uid://dbjjy24r8qd5u" path="res://assets/art/buttons/cart.png" id="2_tgher"]
+[ext_resource type="Texture2D" uid="uid://dbjjy24r8qd5u" path="res://assets/art/ui/buttons/cart.png" id="2_tgher"]
 [ext_resource type="Texture2D" uid="uid://q18qaqgk35n7" path="res://assets/art/cannon/cannon.png" id="3_glkpd"]
-[ext_resource type="Script" path="res://scripts/cannon.gd" id="4_doksa"]
+[ext_resource type="Resource" uid="uid://k67413ukmnr5" path="res://resources/cursor_data.tres" id="4_d8gqv"]
+[ext_resource type="Script" path="res://scripts/player_cannon/cannon.gd" id="4_doksa"]
 [ext_resource type="Texture2D" uid="uid://cwj8u03r86ein" path="res://assets/art/cursors/crosshair.png" id="4_pkcqe"]
-[ext_resource type="Texture2D" uid="uid://dsyrsiecv7i43" path="res://assets/art/buttons/gear.png" id="5_42xvp"]
-[ext_resource type="Script" path="res://scripts/crosshair.gd" id="5_o2wqg"]
+[ext_resource type="Texture2D" uid="uid://b6whkoefh3r6i" path="res://assets/art/ui/skull.png" id="5_01hyn"]
+[ext_resource type="Texture2D" uid="uid://dsyrsiecv7i43" path="res://assets/art/ui/buttons/gear.png" id="5_42xvp"]
+[ext_resource type="Script" path="res://scripts/player_cannon/crosshair.gd" id="5_o2wqg"]
+[ext_resource type="FontFile" uid="uid://1f1geqros8kp" path="res://assets/fonts/raleway/static/Raleway-Black.ttf" id="6_oxka5"]
+[ext_resource type="Texture2D" uid="uid://cj2yhqoyvsiw6" path="res://assets/art/ui/buttons/tool_hammer.png" id="7_6tky8"]
+[ext_resource type="Script" path="res://scripts/tank_spawner.gd" id="14_78ya6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8igjm"]
+font = ExtResource("6_oxka5")
+font_size = 40
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf0wc"]
 size = Vector2(97, 97)
 
+[sub_resource type="Curve2D" id="Curve2D_8jcm1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -6, -52, 0, 0, 0, 0, 1157, -63, 0, 0, 0, 0, 1174, 660, 0, 0, 0, 0, -14, 655, 0, 0, 0, 0, -11, -49)
+}
+point_count = 5
+
 [node name="Game" type="Node2D"]
 
-[node name="Background" type="TextureRect" parent="."]
-offset_left = 3.0
-offset_right = 1151.0
-offset_bottom = 645.0
-texture = ExtResource("1_pp8ja")
-expand_mode = 1
-
-[node name="Cursor" type="TextureRect" parent="."]
-unique_name_in_owner = true
-offset_left = 577.0
-offset_top = 320.0
-offset_right = 617.0
-offset_bottom = 360.0
-texture = ExtResource("4_pkcqe")
-expand_mode = 1
-script = ExtResource("5_o2wqg")
-
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SkullIcon" type="TextureRect" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_top = 32.0
+offset_right = -24.0
+offset_bottom = 96.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_01hyn")
+
+[node name="EnemiesRemainingLabel" type="Label" parent="UI"]
+offset_left = 552.0
+offset_top = 38.0
+offset_right = 661.0
+offset_bottom = 86.0
+text = "0/10"
+label_settings = SubResource("LabelSettings_8igjm")
 
 [node name="ShopButton" type="Button" parent="UI"]
 anchors_preset = 2
@@ -42,6 +61,8 @@ offset_top = -97.0
 offset_right = 95.0
 offset_bottom = -39.0
 grow_vertical = 0
+text = "
+"
 icon = ExtResource("2_tgher")
 
 [node name="SettingsButton" type="Button" parent="UI"]
@@ -51,6 +72,35 @@ offset_right = 87.0
 offset_bottom = 87.0
 toggle_mode = true
 icon = ExtResource("5_42xvp")
+
+[node name="BuildButton" type="Button" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 119.0
+offset_top = -96.0
+offset_right = 181.0
+offset_bottom = -38.0
+grow_vertical = 0
+icon = ExtResource("7_6tky8")
+icon_alignment = 1
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 3.0
+offset_right = 1151.0
+offset_bottom = 645.0
+texture = ExtResource("1_pp8ja")
+
+[node name="Cursor" type="TextureRect" parent="."]
+unique_name_in_owner = true
+offset_left = 577.0
+offset_top = 320.0
+offset_right = 617.0
+offset_bottom = 360.0
+texture = ExtResource("4_pkcqe")
+expand_mode = 1
+script = ExtResource("5_o2wqg")
+cursor_data = ExtResource("4_d8gqv")
 
 [node name="Player" type="Area2D" parent="."]
 position = Vector2(577, 320)
@@ -80,5 +130,19 @@ gizmo_extents = 36.0
 [node name="ReloadTimer" type="Timer" parent="Player"]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_jo3rp")
+
+[node name="TankSpawner" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8jcm1")
+script = ExtResource("14_78ya6")
+
+[node name="TankSpawnPoint" type="PathFollow2D" parent="TankSpawner"]
+position = Vector2(-6, -52)
+rotation = -0.00945802
+
+[node name="SpawnTimer" type="Timer" parent="TankSpawner"]
+autostart = true
 
 [connection signal="timeout" from="Player/ReloadTimer" to="Player/Cannon" method="_on_reload_timer_timeout"]

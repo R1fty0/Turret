@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TankBulletData" load_steps=3 format=3 uid="uid://cm5g5if0akq7t"]
+
+[ext_resource type="Script" path="res://scripts/resources/tank_bullet_data.gd" id="1_lkvas"]
+[ext_resource type="Texture2D" uid="uid://cqedxd78eluog" path="res://assets/art/tanks/tank_parts/standard/bullets/bulletDark2_outline.png" id="1_ujm6f"]
+
+[resource]
+script = ExtResource("1_lkvas")
+bullet_sprite = ExtResource("1_ujm6f")
+bullet_speed = 100.0
+bullet_damage = 5.0
+bullet_lifetime = 5.0

@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://pk4df8djastb"]
+
+[ext_resource type="Script" path="res://scripts/standard_tank.gd" id="1_sbrfs"]
+[ext_resource type="Texture2D" uid="uid://c8w4g5ckulgqu" path="res://assets/art/tanks/tank_parts/standard/hulls/tankBody_sand_outline.png" id="2_4t1q0"]
+[ext_resource type="Resource" uid="uid://5cv72v0p2iwp" path="res://resources/standard_tank/tank_data/black_tank.tres" id="2_8qrkx"]
+[ext_resource type="Texture2D" uid="uid://dn5gkqdmds4vx" path="res://assets/art/tanks/tank_parts/standard/barrels/tankSand_barrel2_outline.png" id="3_cmggb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stc04"]
+size = Vector2(41, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxg6o"]
+size = Vector2(42, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvfll"]
+radius = 130.0
+
+[node name="StandardTank" type="CharacterBody2D"]
+position = Vector2(154, 61)
+script = ExtResource("1_sbrfs")
+data = ExtResource("2_8qrkx")
+
+[node name="Hull" type="Sprite2D" parent="."]
+texture = ExtResource("2_4t1q0")
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_stc04")
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(0, 18)
+texture = ExtResource("3_cmggb")
+
+[node name="FiringPoint" type="Marker2D" parent="Gun"]
+position = Vector2(0, 18)
+
+[node name="BulletHitbox" type="Area2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="BulletHitbox"]
+shape = SubResource("RectangleShape2D_oxg6o")
+debug_color = Color(0.501961, 0.470588, 0, 0.419608)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GunRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunRange"]
+shape = SubResource("CircleShape2D_jvfll")
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0y8favfsg8kx"]
+
+[ext_resource type="Script" path="res://scripts/tank_bullet.gd" id="1_kqhtq"]
+[ext_resource type="Texture2D" uid="uid://b5xcwljxhp4pk" path="res://assets/art/tanks/tank_parts/standard/bullets/bulletBlue2_outline.png" id="2_an8gb"]
+[ext_resource type="Resource" uid="uid://cm5g5if0akq7t" path="res://resources/standard_tank/bullet_data/black_tank_bullet.tres" id="2_vibwd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ev6ee"]
+
+[node name="TankBullet" type="Area2D"]
+top_level = true
+script = ExtResource("1_kqhtq")
+data = ExtResource("2_vibwd")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_an8gb")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ev6ee")
